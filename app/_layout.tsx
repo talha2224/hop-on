@@ -13,7 +13,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('../assets/fonts/Poppins-Regular.ttf'),
   });
 
   useEffect(() => {
@@ -29,8 +29,15 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/index" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/name" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/phone" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/prefernce" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/final" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/index" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/name" options={{ headerShown: false }} />
+      {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
     </ThemeProvider>
   );
