@@ -29,3 +29,4 @@ const Indexstyle = StyleSheet.create({
 })
 
 export default Indexstyle
+// eas build --platform android --profile production
