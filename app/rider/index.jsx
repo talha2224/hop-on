@@ -4,6 +4,8 @@ import { Image, Text, TextInput, View } from 'react-native'
 import mailImg from '../../assets/images/mail.png';
 import googleImg from '../../assets/images/google.png';
 import appleImg from '../../assets/images/apple.png';
+import Logo from '../../assets/images/hop.png'
+
 import { router } from 'expo-router';
 const RootLayout = () => {
 
@@ -12,14 +14,14 @@ const RootLayout = () => {
   return (
     <View style={indexstyle.container}>
 
-      <View style={indexstyle.logoContainer}></View>
+      <Image source={Logo} style={indexstyle.logo} />
       <Text style={indexstyle.welcome}>Welcome back!! </Text>
       <View style={[indexstyle.btnContainer, { width: "100%" }]}>
         <View style={indexstyle.btn1}>
           <Text style={indexstyle.btn1Txt}>Rider</Text>
         </View>
         <View style={indexstyle.btn2}>
-          <Text style={indexstyle.btn2Txt} onPress={()=>router.push("/driver")}>Driver</Text>
+          <Text style={indexstyle.btn2Txt} onPress={() => router.push("/driver")}>Driver</Text>
         </View>
       </View>
 
@@ -33,17 +35,17 @@ const RootLayout = () => {
       }
 
       <Text style={indexstyle.or}>Or</Text>
-      <Text style={[indexstyle.numberTxt,{width:"100%"}]}>Enter your mobile number</Text>
+      <Text style={[indexstyle.numberTxt, { width: "100%" }]}>Enter your mobile number</Text>
 
       <View style={[indexstyle.phoneContainer, { width: "100%" }]}>
         <View style={indexstyle.country}>
           <Text>US</Text>
         </View>
-        <TextInput style={[indexstyle.input,{flex:1}]} placeholder='+91 2335665456'/>
+        <TextInput style={[indexstyle.input, { flex: 1 }]} placeholder='+91 2335665456' />
       </View>
 
       <View style={[indexstyle.btn, { width: "100%" }]}>
-        <Text onPress={()=>router.push("/rider/name")} style={indexstyle.btnTxt}>Continue</Text>
+        <Text onPress={() => router.push("/rider/name")} style={indexstyle.btnTxt}>Continue</Text>
       </View>
 
     </View>

@@ -8,15 +8,13 @@ const indexstyle = StyleSheet.create({
         alignItems:"center",
         padding:20
     },
-    logoContainer:{
-        backgroundColor:"#3474ff",
-        width:80,
-        height:80,
-        borderRadius:20
+    logo:{
+        width:180,
+        height:180,
     },
     welcome:{
         textAlign:"center",
-        marginTop:20,
+        marginTop:-30,
         fontSize:30,
         fontWeight:"600"
     },

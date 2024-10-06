@@ -26,7 +26,7 @@ const final = () => {
 
 
             <View style={[nameStyle.btn, { width: "100%" }]}>
-                <Text onPress={() => router.push("/rider")} style={nameStyle.btnTxt}>Continue</Text>
+                <Text onPress={() => router.push("/rider/home")} style={nameStyle.btnTxt}>Continue</Text>
             </View>
 
         </View>

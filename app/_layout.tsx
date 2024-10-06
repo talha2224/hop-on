@@ -35,6 +35,13 @@ export default function RootLayout() {
         <Stack.Screen name="rider/phone" options={{ headerShown: false }} />
         <Stack.Screen name="rider/prefernce" options={{ headerShown: false }} />
         <Stack.Screen name="rider/final" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/index" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/location" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/canceled" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/feedback" options={{ headerShown: false }} />
+
+
+
         <Stack.Screen name="driver/index" options={{ headerShown: false }} />
         <Stack.Screen name="driver/name" options={{ headerShown: false }} />
       {/* <Stack.Screen name="+not-found" /> */}
