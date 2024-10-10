@@ -39,6 +39,9 @@ export default function RootLayout() {
         <Stack.Screen name="rider/home/location" options={{ headerShown: false }} />
         <Stack.Screen name="rider/home/canceled" options={{ headerShown: false }} />
         <Stack.Screen name="rider/home/feedback" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/notification" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/trip" options={{ headerShown: false }} />
+
 
 
 
