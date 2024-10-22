@@ -41,10 +41,19 @@ export default function RootLayout() {
         <Stack.Screen name="rider/home/feedback" options={{ headerShown: false }} />
         <Stack.Screen name="rider/home/notification" options={{ headerShown: false }} />
         <Stack.Screen name="rider/home/trip" options={{ headerShown: false }} />
-
-
-
-
+        <Stack.Screen name="rider/home/profile" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/msg" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/notification2" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/saved" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/lang" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/setting" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/report" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/wallet" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/payment" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/card" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/fund" options={{ headerShown: false }} />
+        <Stack.Screen name="rider/home/confirmation" options={{ headerShown: false }} />
+        
         <Stack.Screen name="driver/index" options={{ headerShown: false }} />
         <Stack.Screen name="driver/name" options={{ headerShown: false }} />
       {/* <Stack.Screen name="+not-found" /> */}
