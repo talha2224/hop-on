@@ -19,7 +19,7 @@ const review = () => {
 
             <Text style={nameStyle.txt}>Review our Terms & Conditions</Text>
 
-            <Text style={{ color: "#979292",textAlign:"center",marginTop:"10px" }}>By selecting  “I Agree” below. I  have reviewed and agreed to the Terms of Use and acknowledge the Privacy and I am 18 yeaof age</Text>
+            <Text style={{ color: "#979292",textAlign:"center",marginTop:"10px" }}>By selecting  “I Agree” below. I  have reviewed and agreed to the Terms of Use and acknowledge the Privacy and I am 18 years of age</Text>
             <Text style={{ color: "#979292",textAlign:"center",marginTop:20 }}>I Agree to the above terms</Text>
 
 

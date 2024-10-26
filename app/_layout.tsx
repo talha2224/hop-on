@@ -64,6 +64,32 @@ export default function RootLayout() {
         <Stack.Screen name="driver/home/index" options={{ headerShown: false }} />
         <Stack.Screen name="driver/home/notification" options={{ headerShown: false }} />
         <Stack.Screen name="driver/home/trip" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/earning" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/performance" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/withdraw" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/confirmation" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/account" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/document" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/vehicle" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/payment" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/saved" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/preference" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/setting" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/report" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/notification2" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/lang" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/emergency" options={{ headerShown: false }} />
+
+
+
+
+
+
+
+
+
+
+
 
       {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
