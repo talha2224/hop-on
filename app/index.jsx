@@ -8,8 +8,8 @@ const RootLayout = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push('/rider')
-      // router.push('/driver/home/emergency')
+      // router.push('/rider')
+      router.push('/driver/home/vehicle')
     }, 2000)
     return () => clearTimeout(timer);
   }, []);

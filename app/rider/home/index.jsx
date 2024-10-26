@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, StatusBar, Text, TextInput, View } from 'react-native';
+import { Image, ScrollView, StatusBar, Text, TextInput, useColorScheme, View } from 'react-native';
 import style from '../../../style/rider/home/home';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -14,7 +14,93 @@ import RequestImage from '../../../assets/images/request.png';
 import MapImage from '../../../assets/images/map.png';
 import BottomNav from '../../../components/BottomNav';
 import { useRouter } from 'expo-router';
+import { useTheme } from '../../../hooks/themeContext';
 
+
+const darkMapStyle = [
+    {
+      elementType: 'geometry',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }],
+    },
+    {
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      elementType: 'labels.text.stroke',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      featureType: 'administrative.country',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#9e9e9e' }],
+    },
+    {
+      featureType: 'poi',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#bdbdbd' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'geometry.fill',
+      stylers: [{ color: '#2c2c2c' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#8a8a8a' }],
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'geometry',
+      stylers: [{ color: '#373737' }],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry',
+      stylers: [{ color: '#3c3c3c' }],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry.stroke',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      featureType: 'road.highway.controlled_access',
+      elementType: 'geometry',
+      stylers: [{ color: '#4e4e4e' }],
+    },
+    {
+      featureType: 'road.local',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#616161' }],
+    },
+    {
+      featureType: 'transit',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [{ color: '#000000' }],
+    },
+    {
+      featureType: 'water',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#3d3d3d' }],
+    },
+  ];
+  
 
 const Index = () => {
     const router = useRouter()
@@ -22,6 +108,11 @@ const Index = () => {
     const [drivers, setDrivers] = useState([]);
     const [errorMsg, setErrorMsg] = useState(null);
     const [showLocation, setShowLocation] = useState(false)
+    const colorScheme = useColorScheme();
+
+    const { isDarkTheme, toggleTheme } = useTheme();
+
+
 
     const userLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -59,7 +150,7 @@ const Index = () => {
                 {/* <StatusBar hidden={true} /> */}
 
                 {/* MAP */}
-                <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={[{ featureType: "all", elementType: "labels", stylers: [{ visibility: "off" }] }]}>
+                <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={isDarkTheme&&darkMapStyle}>
 
                     <Marker coordinate={mapRegion}>
                         <View style={{ alignItems: 'center' }}>
@@ -81,12 +172,12 @@ const Index = () => {
 
                     <Image source={UserImage} />
 
-                    <View style={style.btnContainer}>
+                    <View style={isDarkTheme ? style.btnContainerDark : style.btnContainer}>
                         <View style={style.btn1}>
                             <Text>Rider</Text>
                         </View>
                         <View>
-                            <Text style={style.btn2Txt}>Driver</Text>
+                            <Text style={isDarkTheme ? style.btn2TxtDark : style.btn2Txt}>Driver</Text>
                         </View>
                     </View>
 
@@ -98,15 +189,15 @@ const Index = () => {
                 {/* LOCATION  */}
 
                 <View style={style.locationContainer}>
-                    <View style={[style.location, { width: "90%" }]}>
-                        <Text style={{ fontSize: 20 }}>Good Morning Flora</Text>
-                        <TextInput placeholder='Where To ?' style={{ marginTop: 10, backgroundColor: "#FAFAFA", height: 40, paddingHorizontal: 10, borderRadius: 10 }} />
+                    <View style={[isDarkTheme?style.locationDark:style.location, { width: "90%" }]}>
+                        <Text style={{ fontSize: 20,color:isDarkTheme && "#ffff" }}>Good Morning Flora</Text>
+                        <TextInput placeholderTextColor={isDarkTheme&& "#C6C6C6"} placeholder='Where To ?' style={{ marginTop: 10, backgroundColor: isDarkTheme ? "#333233":"#FAFAFA", height: 40, paddingHorizontal: 10, borderRadius: 10 }} />
                         <View style={{ marginTop: 15 }}>
                             <View style={{ display: "flex", alignItems: "flex-start", flexDirection: "row" }}>
                                 <Image source={HomeImage} />
 
                                 <View style={{ marginLeft: 10 }}>
-                                    <Text>Home (20 min ago and 12Km Away)</Text>
+                                    <Text style={{color:isDarkTheme&&"#fff"}}>Home (20 min ago and 12Km Away)</Text>
                                     <Text style={{ color: "#71757b", marginTop: 5 }}>Studio 10 Joke Stream</Text>
                                 </View>
 
@@ -116,7 +207,7 @@ const Index = () => {
                                 <Image source={OfficeImage} />
 
                                 <View style={{ marginLeft: 10 }}>
-                                    <Text>Office (20 min ago and 12Km Away)</Text>
+                                    <Text style={{color:isDarkTheme&&"#fff"}}>Office (20 min ago and 12Km Away)</Text>
                                     <Text style={{ color: "#71757b", marginTop: 5 }}>Studio 10 Joke Stream</Text>
                                 </View>
 
@@ -127,14 +218,13 @@ const Index = () => {
 
                         <View style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                             <Image source={OldImage} />
-                            <Text style={{ color: "#71757b", marginLeft: 8 }}>Jekad Store</Text>
+                            <Text style={{ color:isDarkTheme ? "#fff":"#71757b", marginLeft: 8 }}>Jekad Store</Text>
                         </View>
 
                         <View style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                             <Image source={OldImage} />
-                            <Text style={{ color: "#71757b", marginTop: 5, marginLeft: 8 }}>Cinema</Text>
+                            <Text style={{ color:isDarkTheme ? "#fff":"#71757b", marginTop: 5, marginLeft: 8 }}>Cinema</Text>
                         </View>
-
                     </View>
                 </View>
 
@@ -183,12 +273,12 @@ const Index = () => {
                 showLocation && (
 
                     <View style={[style.popupContainer,{width:"100%",height:"100%"}]}>
-                        <View style={[style.popu,{width:"90%"}]}>
-                            <Image source={MapImage}/>
-                            <Text style={{fontSize:16,fontWeight:"700"}}>Access your location</Text>
+                        <View style={[isDarkTheme ? style.popuDark :style.popu,{width:"90%"}]}>
+                            <Image source={MapImage} style={{marginBottom:5}}/>
+                            <Text style={{fontSize:16,fontWeight:"700",color:isDarkTheme && "#fff"}}>Access your location</Text>
                             <Text style={{color:"#979292"}}>Allow app to access your location </Text>
                             <View style={{width:"100%",height:40,justifyContent:"center",alignItems:"center",borderColor:"#F0F0F0",borderWidth:1,marginTop:10,borderRadius:8}}>
-                                <Text onPress={()=>router.push("/rider/home/location")} style={{color:"#2666cf"}}>Use current location</Text>
+                                <Text onPress={()=>router.push("/rider/home/location")} style={{color:isDarkTheme ? "#fff":"#2666cf"}}>Use current location</Text>
                             </View>
                             <View style={{backgroundColor:"#2666cf",width:"100%",height:40,justifyContent:"center",alignItems:"center",marginTop:10,borderRadius:8}}>
                                 <Text onPress={()=>router.push("/rider/home/location")} style={{color:"#fff"}}>Enter my new location</Text>

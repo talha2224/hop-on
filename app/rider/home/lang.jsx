@@ -6,58 +6,60 @@ import { AntDesign, EvilIcons } from '@expo/vector-icons';
 import home2Image from '../../../assets/images/checkon.png';
 import office2Image from '../../../assets/images/checkoff.png';
 import { useRouter } from 'expo-router';
+import { useTheme } from '../../../hooks/themeContext';
 
 
 const lang = () => {
     const arr = [1, 2, 3, 4]
     const router = useRouter()
+    const { isDarkTheme } = useTheme();
 
     return (
-        <View style={style.container}>
+        <View style={isDarkTheme?style.containerDark:style.container}>
 
-            <View style={{ paddingHorizontal: 20, paddingVertical: 30, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
-                <AntDesign onPress={() => router.push("/rider/home/profile")} name="arrowleft" size={24} color="black" />
-                <Text>Languages</Text>
+            <View style={{ paddingHorizontal: 20, paddingVertical: 40, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
+                <AntDesign onPress={() => router.push("/rider/home/profile")} name="arrowleft" size={24} color={isDarkTheme?"white":"black"} />
+                <Text style={{color:isDarkTheme&&"white"}}>Languages</Text>
                 <Pressable ><EvilIcons name="search" size={24} color="black" /></Pressable>
             </View>
 
-            <ScrollView contentContainerStyle={style.Scrollcontainer}>
+            <ScrollView contentContainerStyle={isDarkTheme?style.ScrollcontainerDark:style.Scrollcontainer}>
 
-                <View style={{ backgroundColor: "#fff", paddingVertical: 10, paddingHorizontal: 1, borderRadius: 10, marginHorizontal: 10 }}>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>English</Text>
+                <View style={{ backgroundColor: "#333333", paddingVertical: 10, paddingHorizontal: 1, borderRadius: 10, marginHorizontal: 10 }}>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>English</Text>
                         <Image style={{ width: 15, height: 15 }} source={home2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>French</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>French</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Russian</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Russian</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>German</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>German</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Korean</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Korean</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Chineese</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Chineese</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Ukraine</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Ukraine</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Spanish</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Spanish</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
-                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
-                        <Text style={{ color: "#323232", marginBottom: 2 }}>Arabic</Text>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth:isDarkTheme?0:1, paddingBottom: 10 }}>
+                        <Text style={{ color:isDarkTheme?"white":"#323232", marginBottom: 2 }}>Arabic</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
 

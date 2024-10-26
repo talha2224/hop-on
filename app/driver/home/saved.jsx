@@ -7,22 +7,26 @@ import home2Image from '../../../assets/images/home2.png';
 import office2Image from '../../../assets/images/office2.png';
 import { useRouter } from 'expo-router';
 
+import { useTheme } from '../../../hooks/themeContext';
+
 const saved = () => {
-    const arr = [1, 2, 3,4]
     const router = useRouter()
+    const { isDarkTheme } = useTheme();
+    const arr= [1,2,3]
+
 
     return (
-        <View style={style.container}>
+        <View style={isDarkTheme?style.containerDark2:style.container}>
 
-            <View style={{ paddingHorizontal: 20, paddingVertical: 30, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
-                <AntDesign onPress={() => router.push("/driver/home/account")} name="arrowleft" size={24} color="black" />
-                <Text>Saved places</Text>
+            <View style={{ paddingHorizontal: 20, paddingVertical: 40, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
+                <AntDesign onPress={() => router.push("/driver/home/account")} name="arrowleft" size={24} color={isDarkTheme?"white":"black"} />
+                <Text style={{color:isDarkTheme&&"white"}}>Saved places</Text>
                 <View></View>
             </View>
 
-            <ScrollView contentContainerStyle={style.Scrollcontainer}>
+            <ScrollView contentContainerStyle={isDarkTheme?style.ScrollcontainerDark2:style.Scrollcontainer}>
 
-                <View style={{ backgroundColor: "#fff", paddingVertical: 10, paddingHorizontal: 1, borderRadius: 10, marginHorizontal: 10 }}>
+                <View style={{ backgroundColor:isDarkTheme?"#070D25":"#fff", paddingVertical: 10, paddingHorizontal: 1, borderRadius: 10, marginHorizontal: 10 }}>
                     {
                         arr.map((i) => (
                             <View key={i} style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
@@ -32,7 +36,7 @@ const saved = () => {
                                     </View>
                                     <View style={{ marginLeft: 3 }}>
                                         <Text style={{ color: "#323232", marginBottom: 2 }}>{i%2==0 ? "Home" :"Office"}</Text>
-                                        <Text style={{ color: "#000000" }}>Studio 10 Joke Stream</Text>
+                                        <Text style={{ color:isDarkTheme?"#fff":"#000000" }}>Studio 10 Joke Stream</Text>
                                     </View>
                                 </View>
                                 <AntDesign name="edit" size={24} color="#747C88" />

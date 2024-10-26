@@ -1,25 +1,26 @@
 import React from 'react'
 import style from '../../../style/rider/home/profile';
-import { Image, Pressable, ScrollView, StatusBar, Text, View } from 'react-native'
+import { Image, Pressable, StatusBar, Text, View } from 'react-native'
 import BottomNav from '../../../components/BottomNav2'
 import { useRouter } from 'expo-router'
 import userImage from '../../../assets/images/user.png';
 import pushImage from '../../../assets/images/push.png';
 import carImage from '../../../assets/images/car5.png';
-
 import automaticImage from '../../../assets/images/automatic.png';
 import documentImage from '../../../assets/images/document3.png';
 import nearImage from '../../../assets/images/near.png';
-import translationImage from '../../../assets/images/translation.png';
 import editImage from '../../../assets/images/edit.png';
 import themeImage from '../../../assets/images/theme.png';
 import { AntDesign, Entypo } from '@expo/vector-icons';
-
+import { useTheme } from '../../../hooks/themeContext';
+import onImage from '../../../assets/images/on.png';
+import offImage from '../../../assets/images/off.png';
 const account = () => {
     const router = useRouter()
+    const { isDarkTheme, toggleTheme } = useTheme();
 
     return (
-        <View style={style.container}>
+        <View style={isDarkTheme ? style.containerDark2 : style.container}>
 
             <StatusBar hidden={false} />
 
@@ -40,65 +41,80 @@ const account = () => {
                     <AntDesign name="right" size={15} color="white" />
 
                 </View>
-                <View style={{top: 130, left: 10, right: 10, zIndex: 2, elevation: 2, backgroundColor: "#f9f9f9",position:"absolute",borderRadius:5 }}>
+                <View style={{ top: 130, left: 10, right: 10, zIndex: 2, elevation: 2, backgroundColor: isDarkTheme ? "#0B1333" : "#f9f9f9", position: "absolute", borderRadius: 5 }}>
 
-                    <View style={{ backgroundColor: "#fff", padding: 10, borderRadius: 10, }}>
+                    <View style={{ backgroundColor: isDarkTheme ? "#0B1333" : "#fff", padding: 10, borderRadius: 10, }}>
 
 
-                        <Pressable onPress={() => router.push("/driver/home/setting")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginVertical: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/setting")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginVertical: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={automaticImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Settings</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Settings</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/preference")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/preference")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={pushImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Driver preferences</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Driver preferences</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/saved")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/saved")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={nearImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Saved places</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Saved places</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/vehicle")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/vehicle")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={carImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Vehicle information</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Vehicle information</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/document")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/document")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={documentImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Documents</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Documents</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/payment")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/payment")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={editImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Payment</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Payment</Text>
                         </Pressable>
 
-                        <Pressable onPress={() => router.push("/driver/home/report")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
+                        <Pressable onPress={() => router.push("/driver/home/report")} style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
                             <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                                 <Image source={editImage} />
                             </View>
-                            <Text style={{ color: "#454F60" }}>Support</Text>
+                            <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Support</Text>
                         </Pressable>
 
-                        <Pressable style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: 1 }}>
-                            <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
-                                <Image source={themeImage} />
+                        <Pressable onPress={() => router.push("/rider/home/msg")} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row", marginBottom: 10, paddingBottom: 10, borderBottomColor: "#F2F2F2", borderBottomWidth: isDarkTheme ? 0 : 1 }}>
+
+                            <View style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
+                                <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
+                                    <Image source={themeImage} />
+                                </View>
+                                <Text style={{ color: isDarkTheme ? "white" : "#454F60" }}>Dark mode</Text>
                             </View>
-                            <Text style={{ color: "#454F60" }}>Dark mode</Text>
+                            {
+                                isDarkTheme ?
+
+                                    <Pressable onPress={() => toggleTheme(false)}>
+                                        <Image source={onImage} />
+                                    </Pressable>
+                                    :
+
+                                    <Pressable onPress={() => toggleTheme(true)}>
+                                        <Image source={offImage} />
+                                    </Pressable>
+                            }
                         </Pressable>
 
                         <Pressable style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>

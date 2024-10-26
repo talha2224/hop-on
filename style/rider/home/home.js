@@ -7,6 +7,11 @@ const homeStyle = StyleSheet.create({
         flex: 1,
         position:"relative",
     },
+    containerDark: {
+        backgroundColor: "#000",
+        flex: 1,
+        position:"relative",
+    },
     Scrollcontainer: {
         flex:1,
         position:"relative",
@@ -34,6 +39,15 @@ const homeStyle = StyleSheet.create({
         height:30,
         width:"auto"
     },
+    btnContainerDark:{
+        flexDirection:"row",
+        alignItems:"center",
+        backgroundColor:"#000",
+        borderRadius:20,
+        paddingRight:20,
+        height:30,
+        width:"auto"
+    },
     btn1:{
         backgroundColor:"#FFFF",
         marginRight:20,
@@ -46,6 +60,9 @@ const homeStyle = StyleSheet.create({
     btn2Txt:{
         color:"#454f60",
     },
+    btn2TxtDark:{
+        color:"#ffff",
+    },
     locationContainer:{
         position:"absolute",
         top:90,
@@ -56,6 +73,11 @@ const homeStyle = StyleSheet.create({
     },
     location:{
         backgroundColor:"white",
+        padding:10,
+        borderRadius:10
+    },
+    locationDark:{
+        backgroundColor:"#000",
         padding:10,
         borderRadius:10
     },
@@ -94,6 +116,20 @@ const homeStyle = StyleSheet.create({
     },
     popu:{
         backgroundColor:"#fff",
+        padding:10,
+        borderRadius:10,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    popuDark:{
+        backgroundColor:"#292929",
+        padding:10,
+        borderRadius:10,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    popuDark2:{
+        backgroundColor:"#13182F",
         padding:10,
         borderRadius:10,
         justifyContent:"center",

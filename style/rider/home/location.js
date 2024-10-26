@@ -7,6 +7,12 @@ const locationStyle = StyleSheet.create({
         flex: 1,
         position:"relative",
     },
+    containerDark:{
+        backgroundColor: "#000",
+        flex: 1,
+        position:"relative",
+    },
+
     Scrollcontainer: {
         flex:1,
         position:"relative",
@@ -21,7 +27,7 @@ const locationStyle = StyleSheet.create({
     },
     topBar:{
         position:"relative",
-        top:40,
+        top:60,
         left:0,
         right:0,
         justifyContent:"space-between",
@@ -33,7 +39,7 @@ const locationStyle = StyleSheet.create({
     cards: {
         flexDirection: "row",
         padding: 2,
-        margin: 20,
+        padding: 20,
     },
     popupContainer:{
         position:"absolute",
@@ -44,6 +50,12 @@ const locationStyle = StyleSheet.create({
     },
     popu:{
         backgroundColor:"#fff",
+        borderRadius:10,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    popuDark:{
+        backgroundColor:"#000",
         borderRadius:10,
         justifyContent:"center",
         alignItems:"center"

@@ -14,6 +14,92 @@ import { useRouter } from 'expo-router';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import GroupImage from '../../../assets/images/group.png';
 import BottomNav2 from '../../../components/BottomNav2';
+import { useTheme } from '../../../hooks/themeContext';
+
+const darkMapStyle = [
+    {
+      elementType: 'geometry',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }],
+    },
+    {
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      elementType: 'labels.text.stroke',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      featureType: 'administrative.country',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#9e9e9e' }],
+    },
+    {
+      featureType: 'poi',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#bdbdbd' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'geometry.fill',
+      stylers: [{ color: '#2c2c2c' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#8a8a8a' }],
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'geometry',
+      stylers: [{ color: '#373737' }],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry',
+      stylers: [{ color: '#3c3c3c' }],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry.stroke',
+      stylers: [{ color: '#212121' }],
+    },
+    {
+      featureType: 'road.highway.controlled_access',
+      elementType: 'geometry',
+      stylers: [{ color: '#4e4e4e' }],
+    },
+    {
+      featureType: 'road.local',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#616161' }],
+    },
+    {
+      featureType: 'transit',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#757575' }],
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [{ color: '#000000' }],
+    },
+    {
+      featureType: 'water',
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#3d3d3d' }],
+    },
+  ];
+  
 
 
 const index = () => {
@@ -24,6 +110,7 @@ const index = () => {
     const [activeStatus, setactiveStatus] = useState('off')
     const [accept, setAccept] = useState(false);
     const [end, setEnd] = useState(false)
+    const { isDarkTheme} = useTheme();
 
     const userLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -54,7 +141,7 @@ const index = () => {
     }, []);
 
     return (
-        <View style={style.container}>
+        <View style={isDarkTheme?style.containerDark:style.container}>
 
 
             <ScrollView contentContainerStyle={style.Scrollcontainer}>
@@ -64,9 +151,9 @@ const index = () => {
 
                     <Image source={UserImage} />
 
-                    <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: "#F4F4F4", borderRadius: 20, height: 30, width: "auto" }}>
+                    <View style={{ flexDirection: "row", alignItems: "center", backgroundColor:isDarkTheme?"#333333":"#F4F4F4", borderRadius: 20, height: 30, width: "auto" }}>
                         <View style={{ marginLeft: 10, marginRight: 10 }}>
-                            <Text style={style.btn2Txt}>Rider</Text>
+                            <Text style={isDarkTheme?style.btn2TxtDark:style.btn2Txt}>Rider</Text>
                         </View>
                         <View style={{ backgroundColor: "#FFFF", paddingHorizontal: 10, paddingVertical: 3, borderRadius: 20, marginRight: 10 }}>
                             <Text>Driver</Text>
@@ -81,7 +168,7 @@ const index = () => {
                 {/* MAP */}
                 {
                     activeStatus == "off" ?
-                        <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={[{ featureType: "all", elementType: "labels", stylers: [{ visibility: "off" }] }]}>
+                        <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={isDarkTheme&&darkMapStyle}>
 
                             {
                                 activeStatus !== "off" && (
@@ -101,7 +188,7 @@ const index = () => {
                                 </Marker>
                             ))}
                         </MapView> :
-                        <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={[{ featureType: "all", elementType: "labels", stylers: [{ visibility: "off" }] }]}>
+                        <MapView style={style.map} region={mapRegion} showsUserLocation showsMyLocationButton={false} customMapStyle={isDarkTheme&&darkMapStyle}>
 
                             <Marker coordinate={mapRegion}>
                                 <View style={{ alignItems: 'center' }}>
@@ -140,14 +227,14 @@ const index = () => {
                 {
                     activeStatus == "on" && accept !== null && (
                         <View style={{ width: "100%", position: "absolute", bottom: 150, left: 0, zIndex: 999, display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <View style={[{ width: "90%", backgroundColor: "#fff", padding: 10, borderRadius: 10, justifyContent: "center", alignItems: "center" }]}>
+                            <View style={[{ width: "90%", backgroundColor:isDarkTheme?"#13182F":"#fff", padding: 10, borderRadius: 10, justifyContent: "center", alignItems: "center" }]}>
 
-                                <View style={{ marginTop: 10, justifyContent: "space-between", alignItems: "center", flexDirection: "row", backgroundColor: "#FAFAFA", padding: 10, width: "95%", marginVertical: 10 }}>
+                                <View style={{ marginTop: 10, justifyContent: "space-between", alignItems: "center", flexDirection: "row", backgroundColor: !isDarkTheme&&"#FAFAFA", padding: 10, width: "95%", marginVertical: 10 }}>
 
                                     <View style={{ alignItems: "center", flexDirection: "row" }}>
                                         <Image source={UserImage} />
                                         <View style={{ marginLeft: 10 }}>
-                                            <Text>Daniel Graver</Text>
+                                            <Text style={{color:isDarkTheme&&"white"}}>Daniel Graver</Text>
                                             <View style={{ display: "flex", flexDirection: "row", marginTop: 2 }}>
                                                 <AntDesign name="star" size={14} style={{ marginRight: 2 }} color="#51D476" />
                                                 <AntDesign name="star" size={14} style={{ marginRight: 2 }} color="#51D476" />
@@ -163,11 +250,11 @@ const index = () => {
 
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 2, width: "100%" }}>
                                     <Text style={{ color: "#88898a" }}>Pick up location</Text>
-                                    <Text style={{ fontWeight: "600" }}>23142, James crescent...</Text>
+                                    <Text style={{ fontWeight: "600",color:isDarkTheme&&"white" }}>23142, James crescent...</Text>
                                 </View>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 5, width: "100%" }}>
                                     <Text style={{ color: "#88898a" }}>Fare estimate</Text>
-                                    <Text style={{ fontWeight: "600" }}>$120</Text>
+                                    <Text style={{ fontWeight: "600",color:isDarkTheme&&"white" }}>$120</Text>
                                 </View>
 
                                 {
@@ -190,7 +277,7 @@ const index = () => {
                 {
                     end && (
                         <View style={[style.popupContainer, { width: "100%", height: "100%" }]}>
-                            <View style={[style.popu, { width: "90%" }]}>
+                            <View style={[style.popuDark2, { width: "90%" }]}>
 
                                 <View style={{ backgroundColor: "#EBF9EF", display: "flex", justifyContent: "center", alignItems: "center", padding: 15, width: "100%" }}>
 
@@ -202,9 +289,9 @@ const index = () => {
                                 <View style={{ alignItems: "center", flexDirection: "row", width: "100%" }}>
                                     <Image source={GroupImage} />
                                     <View style={{ marginLeft: 20 }}>
-                                        <Text style={{ marginTop: 10, }}>Cinema</Text>
+                                        <Text style={{ marginTop: 10,color:isDarkTheme&&"white" }}>Cinema</Text>
                                         <Text style={{ color: "#A0A1A3", marginTop: 5 }}>310, Jane Ave, Maryland</Text>
-                                        <Text style={{ marginTop: 10, }}>Jekad Store</Text>
+                                        <Text style={{ marginTop: 10,color:isDarkTheme&&"white" }}>Jekad Store</Text>
                                         <Text style={{ color: "#A0A1A3", marginTop: 5 }}>310, Jane Ave, Maryland</Text>
                                     </View>
                                 </View>
@@ -215,7 +302,7 @@ const index = () => {
                                     <Text style={{ color: "#2666cf", fontSize: 13 }}>7.7KM (1 Hour 30 mins)</Text>
                                 </View>
 
-                                <Text style={{ width: "100%", textAlign: "center", marginVertical: 10, color: "#6B6C6D" }}>Leave a review</Text>
+                                <Text style={{ width: "100%", textAlign: "center", marginVertical: 10, color:isDarkTheme?"white":"#6B6C6D" }}>Leave a review</Text>
 
                                 <View style={{ display: "flex", flexDirection: "row",width:"100%",justifyContent:"center" }}>
                                     <AntDesign name="star" size={18} style={{ marginRight: 2 }} color="#51D476" />

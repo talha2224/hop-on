@@ -3,17 +3,17 @@ import { useRoute } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import React from 'react'
 import {  View } from 'react-native'
+import { useTheme } from '../hooks/themeContext';
+
 const BottomNav2 = () => {
     const route = useRoute();
     const router = useRouter();
-
-
-    console.log(route.name,'route.name')
+    const { isDarkTheme, toggleTheme } = useTheme();
 
 
 
     return (
-        <View style={{ position: "absolute", bottom: 2, backgroundColor: "white", width: "100%", paddingVertical: 10, paddingHorizontal: 20, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
+        <View style={{ position: "absolute", bottom: 0, backgroundColor:isDarkTheme?"#000":"white", width: "100%", paddingVertical: 10, paddingHorizontal: 20, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row" }}>
             <Feather onPress={()=>router.push("driver/home")} name="globe" size={24} color={route.name=="driver/home/index" ? "#2666CF":"#8D8C8C"} />
             <FontAwesome6 onPress={()=>router.push("driver/home/trip")} name="car-on" size={24} color={route.name=="driver/home/trip" ? "#2666CF":"#8D8C8C"} />
             <MaterialCommunityIcons onPress={()=>router.push("driver/home/earning")} name="wallet-outline" size={24} color={route.name=="driver/home/earning" ? "#2666CF":"#8D8C8C"} />
