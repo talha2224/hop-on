@@ -56,6 +56,15 @@ export default function RootLayout() {
         
         <Stack.Screen name="driver/index" options={{ headerShown: false }} />
         <Stack.Screen name="driver/name" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/phone" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/vehicle" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/upload" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/review" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/success" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/index" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/notification" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/trip" options={{ headerShown: false }} />
+
       {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
     </ThemeProvider>

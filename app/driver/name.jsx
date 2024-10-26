@@ -19,7 +19,7 @@ const name = () => {
             <TextInput style={[nameStyle.input, { width: "100%" }]} placeholder='Doe' />
 
             <View style={[nameStyle.btn, { width: "100%" }]}>
-                <Text onPress={() => router.push("/driver/name")} style={nameStyle.btnTxt}>Continue</Text>
+                <Text onPress={() => router.push("/driver/phone")} style={nameStyle.btnTxt}>Continue</Text>
             </View>
 
         </View>

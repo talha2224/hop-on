@@ -56,6 +56,10 @@ const lang = () => {
                         <Text style={{ color: "#323232", marginBottom: 2 }}>Spanish</Text>
                         <Image style={{ width: 15, height: 15 }} source={office2Image}/>
                     </View>
+                    <View style={{ marginBottom: 15, marginHorizontal: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F9F9F9", borderBottomWidth: 1, paddingBottom: 10 }}>
+                        <Text style={{ color: "#323232", marginBottom: 2 }}>Arabic</Text>
+                        <Image style={{ width: 15, height: 15 }} source={office2Image}/>
+                    </View>
 
                 </View>
 

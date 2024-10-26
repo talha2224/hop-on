@@ -14,9 +14,13 @@ const indexstyle = StyleSheet.create({
         height:80,
         borderRadius:20
     },
+    logo:{
+        width:180,
+        height:180,
+    },
     welcome:{
         textAlign:"center",
-        marginTop:20,
+        marginTop:0,
         fontSize:30,
         fontWeight:"600"
     },
