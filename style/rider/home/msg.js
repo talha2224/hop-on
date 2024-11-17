@@ -7,10 +7,21 @@ const msg = StyleSheet.create({
         flex: 1,
         position:"relative",
     },
+    containerDark: {
+        backgroundColor: "black",
+        flex: 1,
+        position:"relative",
+    },
     Scrollcontainer: {
         flex:1,
         position:"relative",
         backgroundColor:"#F9F9F9",
+        padding:10
+    },
+    ScrollcontainerDark: {
+        flex:1,
+        position:"relative",
+        backgroundColor:"#272727",
         padding:10
     },
     iconContainer:{

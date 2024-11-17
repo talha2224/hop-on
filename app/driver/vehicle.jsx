@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Pressable, Text, TextInput, View } from 'react-native'
+import { Alert, Image, Pressable, Text, TextInput, View } from 'react-native'
 import nameStyle from '../../style/rider/phone'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { router } from 'expo-router';
@@ -8,8 +8,20 @@ import L1 from '../../assets/images/license.png'
 import L2 from '../../assets/images/license2.png'
 import L3 from '../../assets/images/left.png'
 import { FontAwesome6 } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const vehicle = () => {
+    const checkFiles = async()=>{
+        const savedFiles = await AsyncStorage.getItem("inspection");
+        const insuranceFiles = await AsyncStorage.getItem("insurance");
+        const licenseFiles = await AsyncStorage.getItem("license");
+        if(JSON.parse(savedFiles).length==3 && JSON.parse(insuranceFiles).length==3 && JSON.parse(licenseFiles).length==3 ){
+            router.push("/driver/car")
+        }
+        else{
+            Alert.alert("Upload Required", "Please upload all vehicle photos before continuing.");
+        }
+    }
     return (
         <View style={nameStyle.container}>
 
@@ -44,7 +56,7 @@ const vehicle = () => {
                 <Image source={L3} />
             </Pressable>
 
-            <Pressable onPress={() => router.push("/driver/upload")} style={{ marginVertical: 10, paddingBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F8F8F8", borderBottomWidth: 1 }}>
+            <Pressable onPress={() => router.push("/driver/insurance")} style={{ marginVertical: 10, paddingBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F8F8F8", borderBottomWidth: 1 }}>
                 <View style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                     <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                         <Image source={L2} />
@@ -58,7 +70,7 @@ const vehicle = () => {
             </Pressable>
 
 
-            <Pressable onPress={() => router.push("/driver/upload")} style={{ marginVertical: 10, paddingBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F8F8F8", borderBottomWidth: 1 }}>
+            <Pressable onPress={() => router.push("/driver/inspection")} style={{ marginVertical: 10, paddingBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", flexDirection: "row", borderBottomColor: "#F8F8F8", borderBottomWidth: 1 }}>
                 <View style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                     <View style={{ backgroundColor: "#F2F2F2", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 200, width: 32, height: 32, marginRight: 5 }}>
                         <Image source={L2} />
@@ -72,7 +84,10 @@ const vehicle = () => {
             </Pressable>
 
             <View style={[nameStyle.btn, { width: "100%" }]}>
-                <Text onPress={() => router.push("/driver/upload")} style={nameStyle.btnTxt}>Continue</Text>
+                <Text onPress={checkFiles}
+                    // router.push("/driver/car")
+                    // } 
+                    style={nameStyle.btnTxt}>Continue</Text>
             </View>
 
         </View>

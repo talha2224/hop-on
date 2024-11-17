@@ -21,6 +21,17 @@ const report = StyleSheet.create({
         width:35,
         marginBottom:20
     },
+    ScrollcontainerDark2: {
+        flex:1,
+        position:"relative",
+        backgroundColor:"#13182F",
+        padding:10
+    },
+    containerDark2: {
+        backgroundColor: "#13182F",
+        flex: 1,
+        position:"relative",
+    },
 
 })
 

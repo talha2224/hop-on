@@ -1,10 +1,24 @@
-import React from 'react'
-import { Pressable, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
+import { Pressable, Text, TextInput, ToastAndroid, View } from 'react-native'
 import nameStyle from '../../style/rider/phone'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const phone = () => {
+    const [number,setNumber] = useState(null)
+
+
+
+    const onSave = async ()=>{
+        if(!number){
+            ToastAndroid.show('All Fields Are Required', ToastAndroid.SHORT);
+        }
+        else{
+            await AsyncStorage.setItem("phone_number", JSON.stringify(number))
+            router.push("/rider/prefernce")
+        }
+    }
     return (
         <View style={nameStyle.container}>
 
@@ -19,12 +33,12 @@ const phone = () => {
                 <View style={nameStyle.country}>
                     <Text>US</Text>
                 </View>
-                <TextInput style={[nameStyle.input, { flex: 1 }]} placeholder='+91 2335665456' />
+                <TextInput value={number} onChangeText={setNumber} keyboardType='phone-pad' style={[nameStyle.input, { flex: 1 }]} placeholder='+91 2335665456' />
             </View>
 
 
             <View style={[nameStyle.btn, { width: "100%" }]}>
-                <Text onPress={() => router.push("/rider/prefernce")} style={nameStyle.btnTxt}>Continue</Text>
+                <Text onPress={onSave} style={nameStyle.btnTxt}>Continue</Text>
             </View>
 
         </View>

@@ -1,12 +1,51 @@
 import React, { useState } from 'react'
-import { Pressable, Text, TextInput, View } from 'react-native'
+import { Pressable, Text, TextInput, ToastAndroid, View } from 'react-native'
 import nameStyle from '../../style/rider/prefernce'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import config from '../../config'
 import { router } from 'expo-router';
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const prefernce = () => {
 
     const [state, setState] = useState(0)
+
+    const createAccount = async () => {
+        try {
+            let body = {
+                first_name: JSON.parse(await AsyncStorage.getItem("first_name")),
+                last_name: JSON.parse(await AsyncStorage.getItem("lastt_name")),
+                phone_number: JSON.parse(await AsyncStorage.getItem("phone_number")),
+                prefference: state == 0 ? "Economy" : "Premium"
+            }
+
+
+            console.log(body, 'body')
+            console.log(`${config.baseUrl}/rider/register`)
+            const res = await fetch(`https://389f-2402-e000-54e-1661-9c72-eb00-decf-acb5.ngrok-free.app/api/v1/rider/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            console.log(res,'res')
+            if (res) {
+                const responseBody = await res.json();
+                ToastAndroid.show('Account Created', ToastAndroid.SHORT);
+                await AsyncStorage.setItem("userInfo", JSON.stringify(responseBody.data))
+                // await AsyncStorage.removeItem("first_name")
+                // await AsyncStorage.removeItem("lastt_name")
+                // await AsyncStorage.removeItem("phone_number")
+                router.push("/rider/final")
+
+            }
+        }
+        catch (error) {
+            console.log(error)
+            // ToastAndroid.show('Error: Account not found', ToastAndroid.SHORT);
+        }
+    }
+
     return (
         <View style={nameStyle.container}>
 
@@ -19,19 +58,19 @@ const prefernce = () => {
             <Text style={{ color: "#979292" }}>Choose your preferred ride type</Text>
 
             <View style={nameStyle.btnContainer}>
-                <View style={state==0 ? nameStyle.btn1:nameStyle.btn2}>
-                    <Text onPress={()=>setState(0)}>Economy</Text>
+                <View style={state == 0 ? nameStyle.btn1 : nameStyle.btn2}>
+                    <Text onPress={() => setState(0)}>Economy</Text>
                 </View>
 
-                <View style={state==1 ? nameStyle.btn1:nameStyle.btn2}>
-                    <Text onPress={()=>setState(1)}>Premium</Text>
+                <View style={state == 1 ? nameStyle.btn1 : nameStyle.btn2}>
+                    <Text onPress={() => setState(1)}>Premium</Text>
                 </View>
 
             </View>
 
 
             <View style={[nameStyle.btn, { width: "100%" }]}>
-                <Text onPress={() => router.push("/rider/final")} style={nameStyle.btnTxt}>Continue</Text>
+                <Text onPress={createAccount} style={nameStyle.btnTxt}>Continue</Text>
             </View>
 
         </View>

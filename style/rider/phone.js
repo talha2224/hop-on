@@ -9,8 +9,21 @@ const phoneStyle = StyleSheet.create({
         paddingHorizontal:20,
         paddingVertical:50
     },
+    containerDark:{
+        backgroundColor:"#13182F",
+        flex:1,
+        paddingHorizontal:20,
+        paddingVertical:50
+    },
     iconContainer:{
         backgroundColor:"#F4F4F4",
+        padding:5,
+        borderRadius:8,
+        width:35,
+        marginBottom:20
+    },
+    iconContainerDark:{
+        backgroundColor:"#0B1333",
         padding:5,
         borderRadius:8,
         width:35,

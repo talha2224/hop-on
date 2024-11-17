@@ -6,9 +6,10 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-
+import { ThemeProviderContext } from '../hooks/themeContext';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+import Toast from 'react-native-toast-message';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -27,7 +28,8 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProviderContext>
+      <Toast />
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="rider/index" options={{ headerShown: false }} />
@@ -59,14 +61,43 @@ export default function RootLayout() {
         <Stack.Screen name="driver/phone" options={{ headerShown: false }} />
         <Stack.Screen name="driver/vehicle" options={{ headerShown: false }} />
         <Stack.Screen name="driver/upload" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/insurance" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/inspection" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/car" options={{ headerShown: false }} />
         <Stack.Screen name="driver/review" options={{ headerShown: false }} />
         <Stack.Screen name="driver/success" options={{ headerShown: false }} />
         <Stack.Screen name="driver/home/index" options={{ headerShown: false }} />
         <Stack.Screen name="driver/home/notification" options={{ headerShown: false }} />
         <Stack.Screen name="driver/home/trip" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/earning" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/performance" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/withdraw" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/confirmation" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/account" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/document" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/vehicle" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/payment" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/saved" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/preference" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/setting" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/report" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/notification2" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/lang" options={{ headerShown: false }} />
+        <Stack.Screen name="driver/home/emergency" options={{ headerShown: false }} />
+
+
+
+
+
+
+
+
+
+
+
 
       {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
-    </ThemeProvider>
+    </ThemeProviderContext>
   );
 }
