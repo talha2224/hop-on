@@ -7,6 +7,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { ThemeProviderContext } from '../hooks/themeContext';
+import { ThemeProviderContext } from '../hooks/themeContext';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 import Toast from 'react-native-toast-message';

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StatusBar, Text, TextInput, useColorScheme, View } from 'react-native';
+import { Image, ScrollView, StatusBar, Text, TextInput, useColorScheme, View } from 'react-native';
 import style from '../../../style/rider/home/home';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
